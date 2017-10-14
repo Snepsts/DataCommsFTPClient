@@ -16,8 +16,12 @@ to run this after running that one.
 client.
 * Open the Windows command prompt. (Search for cmd)
 * Move to the directory with the chat client binary.
-* The program takes an argument for the port/application number you run it on.
-	* We recommended using something around 2000x (x being 0-9), make sure you
-	use the same number for this client as you did for the server
-		* i.e. DataCommsChatClient.exe 20003
+* The program takes two arguments:
+	* The first for the IP of the server.
+		* If you're using this on your computer only, you'll want to put
+		localhost for this parameter.
+	* The second for the port/application number you run it on.
+		* We recommended using something around 2000x (x being 0-9), make sure
+		you use the same number for this client as you did for the server.
+	* i.e. DataCommsChatClient.exe localhost 20003
 * You should be good to use our basic Echo Chat setup now!
