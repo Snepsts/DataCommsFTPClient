@@ -25,3 +25,4 @@ client.
 		you use the same number for this client as you did for the server.
 	* i.e. DataCommsChatClient.exe localhost 20003
 * You should be good to use our basic Echo Chat setup now!
+* You can exit the application by sending the message "exit".
