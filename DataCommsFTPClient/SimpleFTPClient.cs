@@ -5,13 +5,13 @@
   Prepared for CS480, Southeast Missouri State University
 
             SimpleFTPClient.cs - Simple FTP client using sockets
-  
+
   This program demonstrates the use of Sockets API to connect to an FTP service
   and send files to that service using a socket interface. The user interface is
   via a MS Dos window.
-  
+
   This program has been compiled and tested under Microsoft Visual Studio 2017.
-  
+
   Copyright 2017 by Michael Ranciglio for VS2017
   Prepared for CS480, Southeast Missouri State University
 
@@ -31,6 +31,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.IO;
 
 class SimpleFTPClient
 {
@@ -63,19 +64,53 @@ class SimpleFTPClient
 		int recv = server.Receive(data);
 		stringData = Encoding.ASCII.GetString(data, 0, recv);
 		Console.WriteLine(stringData);
+		bool exit = false;
 
 		while (true)
 		{
+			Console.WriteLine("Please enter a file name: ");
 			input = Console.ReadLine();
+
 			if (input.Length == 0)
 				continue;
 			if (input == "exit")
 				break;
+
 			server.Send(Encoding.ASCII.GetBytes(input));
 			data = new byte[1024];
 			recv = server.Receive(data);
 			stringData = Encoding.ASCII.GetString(data, 0, recv);
 			Console.WriteLine(stringData);
+
+			while (true)
+			{
+				Console.WriteLine("Please enter the file path to be transferred: ");
+				input = Console.ReadLine();
+
+				if (input.Length == 0)
+					continue;
+				if (input == "exit")
+				{
+					exit = true;
+					break;
+				}
+
+				if (File.Exists(input))
+				{
+					server.SendFile(input);
+					data = new byte[1024];
+					recv = server.Receive(data);
+					stringData = Encoding.ASCII.GetString(data, 0, recv);
+					break;
+				}
+				else
+				{
+					Console.WriteLine("File does not exist, please try with a file that DOES exist.");
+				}
+			}
+
+			if (exit)
+				break;
 		}
 
 		Console.WriteLine("Disconnecting from server...");
