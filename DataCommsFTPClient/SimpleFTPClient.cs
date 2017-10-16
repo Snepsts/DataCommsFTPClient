@@ -1,21 +1,26 @@
 ﻿/******************************************************************************
-            SimpleEchoClient.cs - Simple Echo client using sockets 
-
-  This program demonstrates the use of Sockets API to connect to an ECHO service, 
-  send commands to that service using a socket interface, and receive responses 
-  from that service.  The user interface is via a MS Dos window.
-
-  This program has been compiled and tested under Microsoft Visual Studio 2010.
+            SimpleEchoClient.cs - Simple Echo client using sockets
 
   Copyright 2012 by Ziping Liu for VS2010
   Prepared for CS480, Southeast Missouri State University
 
-******************************************************************************/
+            SimpleFTPClient.cs - Simple FTP client using sockets
+  
+  This program demonstrates the use of Sockets API to connect to an FTP service
+  and send files to that service using a socket interface. The user interface is
+  via a MS Dos window.
+  
+  This program has been compiled and tested under Microsoft Visual Studio 2017.
+  
+  Copyright 2017 by Michael Ranciglio for VS2017
+  Prepared for CS480, Southeast Missouri State University
+
+*******************************************************************************/
 /*-----------------------------------------------------------------------
  *
- * Program: SimpleEchoClient
- * Purpose: contact echoserver, send user input and print server response
- * Usage:   simpleechoclient <compname> [portnum]
+ * Program: SimpleFTPClient
+ * Purpose: contact to FTP server, send files to server
+ * Usage:   SimpleFTPClient <compname> [portnum]
  * Note:    <compname> can be either a computer name, like localhost, xx.cs.semo.edu
  *          or an IP address, like 150.168.0.1
  *
@@ -26,7 +31,8 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-class SimpleEchoClient
+
+class SimpleFTPClient
 {
 	public static void Main(string[] args)
 	{
