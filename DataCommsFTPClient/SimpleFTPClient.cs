@@ -97,10 +97,15 @@ class SimpleFTPClient
 
 				if (File.Exists(input))
 				{
+					Console.WriteLine("Sending file...");
 					server.SendFile(input);
+					Console.WriteLine("File sent!!!");
+
+					Console.WriteLine("Awaiting Confirmation...");
 					data = new byte[1024];
-					recv = server.Receive(data);
-					stringData = Encoding.ASCII.GetString(data, 0, recv);
+					recv = server.Receive(data); //confirmation
+					Console.WriteLine("Confirmation received!!!");
+
 					break;
 				}
 				else
